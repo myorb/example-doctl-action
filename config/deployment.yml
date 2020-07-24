@@ -44,8 +44,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: https
-      protocol: TCP
-      port: 443
+      port: 80
       targetPort: 5000
   selector:
     app: static-example

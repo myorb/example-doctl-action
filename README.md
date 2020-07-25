@@ -1,17 +1,20 @@
-# GitHub Actions for DigitalOcean Example
+# test
 
-This repository contains an example workflow using the [GitHub Action for DigitalOcean](https://github.com/digitalocean/action-doctl) to build, tag, and deploy a container image to a DigitalOcean Kubernetes cluster.
+## Build Setup
 
-## Workflow
+```bash
+# install dependencies
+$ yarn install
 
-The [example workflow](.github/workflows/workflow.yaml) will trigger on every push to this repo's `master` branch. For push, the workflow will:
+# serve with hot reload at localhost:3000
+$ yarn dev
 
-* Build the image from [the included `Dockerfile`](Dockerfile)
-* Tag and push the image to a private DigitalOcean container registry
-* Retrieve the `kubeconfig` file for a DigitalOcean Kubernetes cluster
-* Create a deployment using [config/deployment.yml](config/deployment.yml)
+# build for production and launch server
+$ yarn build
+$ yarn start
 
-### Notes
+# generate static project
+$ yarn generate
+```
 
-* This example is using a Kubernetes cluster running v1.16.x with `action-doctl@v2`. (For older versions, see the [v1 tag](https://github.com/do-community/example-doctl-action/tree/v1).)
-* This example uses `external-dns` [installed via Helm](https://github.com/helm/charts/tree/master/stable/external-dns). This is an optional requirement, but you will need to adjust your `config/deployment.yml` file if it is not in use.
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

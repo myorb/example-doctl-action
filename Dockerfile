@@ -1,6 +1,15 @@
-FROM nginx:alpine
+FROM node:lts-alpine
 
-COPY config/nginx.conf /etc/nginx/conf.d/default.conf
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
-WORKDIR /usr/share/nginx/html
-COPY site .
+RUN mkdir /app
+WORKDIR /app
+COPY . .
+
+RUN yarn
+RUN yarn build
+
+CMD [ "yarn", "start" ]
+
+EXPOSE 3000

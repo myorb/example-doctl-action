@@ -23,12 +23,7 @@ spec:
         - name: static-example
           image: <IMAGE>
           ports:
-            - containerPort: 5000
-          resources:
-            requests:
-              cpu: 100m
-            limits:
-              cpu: 100m
+            - containerPort: 3000
       imagePullSecrets:
         - name: registry-agroxy-registry
 ---
@@ -37,14 +32,14 @@ kind: Service
 metadata:
   name: static-example-service
   annotations:
-    service.beta.kubernetes.io/do-loadbalancer-algorithm: "least_connections"
-    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
-    service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: "/"
+    service.beta.kubernetes.io/do-loadbalancer-algorithm: 'least_connections'
+    service.beta.kubernetes.io/do-loadbalancer-protocol: 'http'
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: '/'
 spec:
   type: LoadBalancer
   ports:
     - name: https
       port: 80
-      targetPort: 5000
+      targetPort: 3000
   selector:
     app: static-example

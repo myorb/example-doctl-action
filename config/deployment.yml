@@ -33,12 +33,20 @@ metadata:
   name: static-example-service
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-algorithm: 'least_connections'
-    service.beta.kubernetes.io/do-loadbalancer-protocol: 'http'
+    # service.beta.kubernetes.io/do-loadbalancer-protocol: 'http'
     service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: '/'
+    # service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
+    # service.beta.kubernetes.io/do-loadbalancer-tls-ports: '443'
+    # service.beta.kubernetes.io/do-loadbalancer-certificate-id: 'ce8666ab-f43b-4b4f-bab3-a3fa5e0a0c79'
+    service.beta.kubernetes.io/do-loadbalancer-hostname: 'agroxy.com.ua'
+    # service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: 'true'
 spec:
   type: LoadBalancer
   ports:
     - name: https
+      port: 443
+      targetPort: 3000
+    - name: http
       port: 80
       targetPort: 3000
   selector:
